@@ -2,24 +2,27 @@ import * as core from "@actions/core";
 import { context } from "@actions/github";
 import { createHandler } from "./handler.js";
 import VError from "verror";
-import {
-  checkSupportedEvent,
-  Event,
-  getInputs,
-  stringInput,
-} from "@infra-blocks/github";
+import { getInputs, stringInput } from "@infra-blocks/github";
 
 async function main() {
   core.debug(`received env: ${JSON.stringify(process.env, null, 2)}`);
   core.debug(`received context: ${JSON.stringify(context, null, 2)}`);
-  checkSupportedEvent(context.eventName, [Event.Push]);
   const inputs = getInputs({
-    example: stringInput(),
+    head: stringInput(),
+    base: stringInput(),
+    title: stringInput({ default: undefined }),
+    body: stringInput({ default: undefined }),
+    "github-token": stringInput(),
+    repository: stringInput(),
   });
   const handler = createHandler({
-    context,
     config: {
-      example: inputs.example,
+      head: inputs.head,
+      base: inputs.base,
+      title: inputs.title,
+      body: inputs.body,
+      gitHubToken: inputs["github-token"],
+      repository: inputs.repository,
     },
   });
   const outputs = await handler.handle();

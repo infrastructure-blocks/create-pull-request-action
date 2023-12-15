@@ -1,5 +1,5 @@
 {
-  "name": "github-action-typescript-docker-template",
+  "name": "create-pull-request-action",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -17,16 +17,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infrastructure-blocks/github-action-typescript-docker-template.git"
+    "url": "git+https://github.com/infrastructure-blocks/create-pull-request-action.git"
   },
   "author": "PhilLavoie",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/infrastructure-blocks/github-action-typescript-docker-template/issues"
+    "url": "https://github.com/infrastructure-blocks/create-pull-request-action/issues"
   },
-  "homepage": "https://github.com/infrastructure-blocks/github-action-typescript-docker-template#readme",
+  "homepage": "https://github.com/infrastructure-blocks/create-pull-request-action#readme",
   "devDependencies": {
-    "@infra-blocks/test": "^0.1.1",
+    "@infra-blocks/test": "^0.1.2",
     "@types/mocha": "^10.0.1",
     "@types/node": "^16.11.25",
     "@types/verror": "^1.10.5",
@@ -46,6 +46,7 @@
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.1",
     "@infra-blocks/github": "^0.2.0",
+    "@octokit/core": "^5.0.2",
     "verror": "^1.10.1"
   }
 }

@@ -1,7 +1,7 @@
 services:
   action:
-    image: infra-blocks/github-action-typescript-template
+    image: infra-blocks/create-pull-request-action
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: github-action-typescript-template
+    container_name: create-pull-request-action

@@ -1,4 +1,4 @@
-# github-action-typescript-template
+# create-pull-request-action
 
 This is a template repository and several updates should be taken after using it as a repository generator:
 - Update this README to reflect the new action

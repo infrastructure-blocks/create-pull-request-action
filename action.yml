@@ -1,14 +1,40 @@
-name: Template action
-description: Does not do anything, it's a template
+name: Create Pull Request Action
+description: |
+  Simply creates a pull request using the GitHub API.
 inputs:
-  example:
-    description: An example input
+  head:
+    description: |
+      The name of the branch where your changes are implemented. For cross-repository pull requests in the same network,
+      namespace head with a user like this: username:branch.
     required: true
+  base:
+    description: |
+      The name of the branch you want the changes pulled into. This should be an existing branch on the current repository.
+      You cannot submit a pull request to one repository that requests a merge to a base of another repository.
+    required:
+      true
+  title:
+    description: |
+      The pull request title.
+    required: false
+  body:
+    description: |
+      The pull request body.
+    required: false
+  github-token:
+    description: |
+      The GitHub token to authenticate with the API. If this is the generated GITHUB_TOKEN, it should have the
+      pull-requests: write permissions. If it is a PAT, then it should have the proper scope on the repository.
+    required: true
+    default: ${{ github.token }}
+  repository:
+    description: |
+      The repository where the pull request will be opened.
+    required: false
+    default: ${{ github.repository }}
 outputs:
-  example-output:
-    description: An example output
+  pull-request:
+    description: The created pull request payload, as returned by the [api](https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#create-a-pull-request).
 runs:
   using: "docker"
   image: Dockerfile
-  args:
-    - ${{ inputs.example }}
